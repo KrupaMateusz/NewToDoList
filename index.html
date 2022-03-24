@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    </style> 
+</head>
+<body>
+    <form class="form">
+        <p>Dodaj zadanie:</p>
+        <input class="dataInput nazwa" type="text" placeholder="Nazwa:">
+        <input class="dataInput kategoria" type="text" placeholder="Kategoria:">
+        <input class="dataInput data" type="date" placeholder="Data:">
+        <select class="dataInput priorytet">
+            <option value="Zwykłe">Zwykłe</option>
+            <option value="Ważne">Ważne</option>
+            <option value="Bardzo Pilne">Bardzo Pilne</option>
+        </select>
+        <div class="colorWrapper">
+            <div class="checkbox green" value="#A0DA41">  </div>
+            <div class="checkbox red" value="#E85555">  </div>
+            <div class="checkbox blue" value="#6EADE8">  </div>
+            <div class="checkbox yellow" value="#E7D856">  </div>
+        </div>
+        <textarea class="description" placeholder="Opis: "></textarea>
+        <button class="dataInput submit">Dodaj!</button>
+    </form>
+    <nav class="navbar">
+        <img src="pics/Lupa.svg" alt="lupa" title="Szukaj">
+        <form class="searchForm">
+            <input class="searchNazwa searchData"type="text" placeholder="Nazwa:">
+            <input class="searchKategoria searchData"type="text" placeholder="Kategoria">
+            <input class="searchDate searchData" type="date" placeholder="Data:">
+            <select class="searchPriorytet searchData">
+                <option value="Zwykłe">Zwykłe</option>
+                <option value="Ważne">Ważne</option>
+                <option value="Bardzo Pilne">Bardzo Pilne</option>
+            </select>
+        </form>
+        <img src="pics/Close.svg" alt="CloseX" title="Usuń filtrowanie">
+    </nav>
+    <main class="mainContent">
+
+    </main>
+    <article class="singleTask">
+
+    </article>
+    <script src="index.js">
+
+    </script>
+</body>
+</html>

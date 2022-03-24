@@ -1,0 +1,14 @@
+1. Utworzyć w js dodawanie zadań, planuje zrobić to tablicą obiektów i dla kadego obiektu
+tworzyć szablon, który będzie wypełnianiy jego wartościami
+
+2. Pole dolne powiino znikać i poszerać maina gdy nie wyświetlamy danych o zadaniu
+
+3. foreachem zczytać wybrany kolor
+
+4. Wymusić wpisywanie danych
+
+5. Być może dorzucve php żeby mieć bazę pamiętającą zadania, to by było fajne.
+
+6. Ciekawym byłoby szukanie po istniejących kategoriach i nazwach, zamiast input selecty
+
+7. Kodzić kodzić i kodzić
