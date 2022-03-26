@@ -13,16 +13,16 @@
 <body>
     <form class="form">
         <p>Dodaj zadanie:</p>
-        <input class="dataInput nazwa" type="text" placeholder="Nazwa:">
-        <input class="dataInput kategoria" type="text" placeholder="Kategoria:">
-        <input class="dataInput data" type="date" placeholder="Data:">
+        <input class="dataInput nazwa" type="text" placeholder="Nazwa:" required>
+        <input class="dataInput kategoria" type="text" placeholder="Kategoria:" required>
+        <input class="dataInput data" type="date" placeholder="Data:" required>
         <select class="dataInput priorytet">
-            <option value="Zwykłe">Zwykłe</option>
-            <option value="Ważne">Ważne</option>
-            <option value="Bardzo Pilne">Bardzo Pilne</option>
+            <option value="normal">Zwykłe</option>
+            <option value="important">Ważne</option>
+            <option value="neededYesterday">Bardzo Pilne</option>
         </select>
         <div class="colorWrapper">
-            <div class="checkbox green" value="#A0DA41">  </div>
+            <div class="checkbox green checkBoxShadow" value="#A0DA41">  </div>
             <div class="checkbox red" value="#E85555">  </div>
             <div class="checkbox blue" value="#6EADE8">  </div>
             <div class="checkbox yellow" value="#E7D856">  </div>
