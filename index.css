@@ -88,3 +88,28 @@ option{
     height: 50px;
     font-size: 2rem;
 }
+.singleTask{
+    width: 250px;
+    height: 130px;
+    box-shadow: 0 0 1em rgba(0,0,0,0.2);
+    margin: 40px;
+    border: 1px solid black;
+}
+.singleTask:hover{
+    box-shadow: 0 0 1.5em rgba(0,0,0,0.5);
+}
+.mainContent{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    padding: 100px;
+}
+.taskHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.taskHeader > *{
+
+    font-size: 2rem;
+}
