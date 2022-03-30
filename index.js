@@ -4,6 +4,7 @@ const main = document.querySelector(".mainContent");
 let taskColor="#A0DA41";
 let tasksTab = [];
 let task= {};
+let sortedTasks=[];
 let taskIndex=0;
 let taskTemplateCreate = ({name, kategoria, data, priorytet, color, desc, index}) =>{
     let art = document.createElement("article");
@@ -11,18 +12,20 @@ let taskTemplateCreate = ({name, kategoria, data, priorytet, color, desc, index}
     let header = document.createElement("header");
     header.classList.add("taskHeader");
     header.style.background = color;
-    let taskName = document.createElement("p");
-    let taskDate = document.createElement("p");
-    taskName.innerText=name;
+    let taskCategory = document.createElement("h3");
+    let taskDate = document.createElement("h4");
+    taskCategory.innerText=kategoria;
     taskDate.innerText=data;
-    header.appendChild(taskName);
+    header.appendChild(taskCategory);
     header.appendChild(taskDate);
-    let div = document.createElement("div");
-    div.classList.add("taskBody");
+    let taskName = document.createElement("p")
+    taskName.innerText=name;
     art.appendChild(header);
-    art.appendChild(div);
+    art.appendChild(taskName);
+
     return art;
 };
+
 
 const inputValidate = (inputElem) => {
     if(inputElem.value===""){
@@ -59,7 +62,6 @@ taskSubmit.addEventListener("click", (ev) => {
     const kategoria = document.querySelector(".kategoria");
     const data = document.querySelector(".data");
     const priorytet = document.querySelector(".priorytet");
-    const description = document.querySelector(".description");
 
     const inputsTab = [nazwa, kategoria, data];
     inputsTab.forEach(inputElem => {
@@ -70,18 +72,27 @@ taskSubmit.addEventListener("click", (ev) => {
         })
     });
     if(nazwa.value!=="" && kategoria.value!=="" && data.value!==""){
+        let prior=0;
+        if(priorytet.value==="important") 
+            prior = 1;
+        if(priorytet.value==="neededYesterday")
+            prior = 2;
         task = {
             name: nazwa.value,
             kategoria: kategoria.value,
             data: data.value,
-            priorytet: priorytet.value,
+            priorytet: prior,
             color: taskColor,
-            desc: description.value,
             index: taskIndex   
         };
         taskIndex++;
+        sortedTasks.push(task);
         tasksTab.push(taskTemplateCreate(task));
+        sortedTasks.sort((a,b)=>{
+            return a.priorytet - b.priorytet;
+        })
         tasksTab.forEach(article=>{main.appendChild(article)});
+        console.log(sortedTasks)
     }else{
         inputsTab.forEach(inputElem => inputValidate(inputElem));
     }

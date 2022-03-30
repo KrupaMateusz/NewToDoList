@@ -12,3 +12,7 @@ tworzyć szablon, który będzie wypełnianiy jego wartościami
 6. Ciekawym byłoby szukanie po istniejących kategoriach i nazwach, zamiast input selecty
 
 7. Kodzić kodzić i kodzić
+
+8. Dodać media query
+ 
+9. Sortowanie tablicy po priorytecie

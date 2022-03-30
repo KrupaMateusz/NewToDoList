@@ -1,115 +1,71 @@
 *{
     box-sizing: border-box;
-    margin: 0;
     font-family: 'Montserrat', sans-serif;
+}
+html{
     font-size: 10px;
 }
-.form{
-    background-color: #DFDFDF;
-    grid-area: 1/1/4/2;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-}
-.navbar{
-    background-color: #EFEFEF;
-}
-.checkBoxShadow{
-    box-shadow: inset 0 0 1em rgba(0,0,0,0.5);
-}
-body{
-    width: 100vw;
-    height: 100vh;
+form{
     display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 70px 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
-.form > *{
-    font-size: 2.5rem;
+form>.dataInput, form>.description{
+    padding: .5em;
+    gap: .5rem;
+    font-size:1.5rem;
+    width: 100%;
 }
-.form > p{
-    margin-top: 50px;
-}
-option{
+form>p, form>.submit{
     font-size: 2rem;
-}
-.dataInput{
-    width: 300px;
-    height: 50px;
-}
-.description{
-    width: 300px;
-    height: 300px;
-}
-.checkbox{
-    width: 50px;
-    height: 50px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
 }
 .colorWrapper{
-    width: 300px;
-    height: 50px;
+    grid-column-start: 1;
+    grid-column-end: 3;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.checkbox{
+    width: clamp(60px, 10vw, 80px);
+    height: clamp(60px, 10vw, 80px);
 }
 .green{
     background-color: #A0DA41;
 }
-.red{
-    background-color: #E85555;
-}
 .blue{
     background-color: #6EADE8;
+}
+.red{
+    background-color: #E85555;
 }
 .yellow{
     background-color: #E7D856;
 }
-.navbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.checkBoxShadow{
+    box-shadow: inset 0 0 1.5rem rgba(0,0,0,0.5);
 }
-.navbar>img{
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-}
-.searchForm{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-.searchData{
-    width: 260px;
-    height: 50px;
-    font-size: 2rem;
+main{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
 }
 .singleTask{
-    width: 250px;
-    height: 130px;
-    box-shadow: 0 0 1em rgba(0,0,0,0.2);
-    margin: 40px;
-    border: 1px solid black;
-}
-.singleTask:hover{
-    box-shadow: 0 0 1.5em rgba(0,0,0,0.5);
-}
-.mainContent{
+    width: 80%;
     display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
-    padding: 100px;
+    flex-direction: column;
+    margin: 1rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.3)
+}
+.taskHeader>h3, .taskHeader>h4{
+    margin: 0px;
 }
 .taskHeader{
+    font-size: 1.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-.taskHeader > *{
-
-    font-size: 2rem;
+    padding: .5rem;
 }
