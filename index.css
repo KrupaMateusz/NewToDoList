@@ -1,4 +1,6 @@
-*{
+*,
+*::before,
+*::after{
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
@@ -8,6 +10,7 @@ html{
 form{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: .5rem;
 }
 form>.dataInput, form>.description{
     padding: .5em;
@@ -47,10 +50,37 @@ form>p, form>.submit{
 .checkBoxShadow{
     box-shadow: inset 0 0 1.5rem rgba(0,0,0,0.5);
 }
+.switch{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: center;
+}
+.bar{
+    width: 15rem;
+    background-color: #ccc;
+    height: 6rem;
+    border-radius: 30px;
+    padding: 0.4rem;
+    position: relative;
+    transition: .5s;
+}
+.slider{
+    content: '';
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 50%;
+    background-color: white;
+    transition: .5s;
+    position: absolute;
+    left: .5rem;
+}
 main{
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 3rem;
+    flex-flow: wrap;
     place-items: center;
+    justify-content: center;
 }
 .singleTask{
     width: 80%;
@@ -68,4 +98,16 @@ main{
     flex-direction: row;
     justify-content: space-between;
     padding: .5rem;
+}
+@media(min-width: 600px){
+    body{
+        display: flex;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    .dataInput, .colorWrapper, .submit{
+        margin: 3rem;
+    }
 }
