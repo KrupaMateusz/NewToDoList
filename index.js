@@ -3,6 +3,7 @@ const checkboxes = document.querySelectorAll(".checkbox");
 const main = document.querySelector(".mainContent");
 const switchBar = document.querySelector(".bar");
 const slider = document.querySelector(".slider");
+const sliderDesc = document.querySelector(".slider-desc");
 let taskColor="#A0DA41";
 let tasksTab = [];
 let templatesTab = [];
@@ -17,12 +18,14 @@ switchBar.addEventListener("click", (ev) =>{
     ev.preventDefault();
     if(checked === 0){
         slider.style.left = "9.4rem";
-        switchBar.style.backgroundColor = "#D042FA";
         checked = 1;
+        sliderDesc.style.left = ".7rem";
+        sliderDesc.innerHTML = "Sortuj po <br> priorytecie"
     }else{
         slider.style.left = "0.5rem";
-        switchBar.style.backgroundColor = "#ccc";
         checked = 0;
+        sliderDesc.style.left = "7rem";
+        sliderDesc.innerHTML = "Sortuj po <br> dacie"
     }
 } )
 
@@ -63,6 +66,7 @@ const dateSort = (tab) => {
     });
     return tab;
 }
+
 
 
 //Tworzenie szablonu dla pojedynczego zadania

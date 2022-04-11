@@ -7,6 +7,9 @@
 html{
     font-size: 10px;
 }
+body{
+    margin: 0;
+}
 form{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -75,6 +78,14 @@ form>p, form>.submit{
     position: absolute;
     left: .5rem;
 }
+.slider-desc{
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 7rem;
+    top: -0.3rem;
+    font-weight: bold;
+}
 main{
     display: flex;
     gap: 3rem;
@@ -101,13 +112,28 @@ main{
 }
 @media(min-width: 600px){
     body{
-        display: flex;
+        display: grid;
+        grid-template-columns: 3fr 7fr;
     }
     form{
         display: flex;
         flex-direction: column;
     }
-    .dataInput, .colorWrapper, .submit{
+    main{
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+    }
+    form> .dataInput,
+    form> .colorWrapper,
+    form> .submit{
         margin: 3rem;
+        width: 80%;
+    }
+    .colorWrapper{
+        gap: 1rem;
+    }
+    .singleTask{
+        max-width: 300px;
     }
 }
