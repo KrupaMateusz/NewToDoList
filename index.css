@@ -53,45 +53,14 @@ form>p, form>.submit{
 .checkBoxShadow{
     box-shadow: inset 0 0 1.5rem rgba(0,0,0,0.5);
 }
-.switch{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    display: flex;
-    justify-content: center;
-}
-.bar{
-    width: 15rem;
-    background-color: #ccc;
-    height: 6rem;
-    border-radius: 30px;
-    padding: 0.4rem;
-    position: relative;
-    transition: .5s;
-}
-.slider{
-    content: '';
-    width: 5.2rem;
-    height: 5.2rem;
-    border-radius: 50%;
-    background-color: white;
-    transition: .5s;
-    position: absolute;
-    left: .5rem;
-}
-.slider-desc{
-    color: white;
-    font-size: 1.5rem;
-    position: absolute;
-    left: 7rem;
-    top: -0.3rem;
-    font-weight: bold;
-}
+
 main{
     display: flex;
     gap: 3rem;
     flex-flow: wrap;
-    place-items: center;
+    flex-direction: row;
     justify-content: center;
+    align-items: baseline;
 }
 .singleTask{
     width: 80%;
@@ -102,6 +71,7 @@ main{
 }
 .taskHeader>h3, .taskHeader>h4{
     margin: 0px;
+    font-size: 2.2rem;
 }
 .taskHeader{
     font-size: 1.2rem;
@@ -109,6 +79,10 @@ main{
     flex-direction: row;
     justify-content: space-between;
     padding: .5rem;
+}
+.singleTask>p{
+    padding: 5px;
+    font-size: 1.6rem;
 }
 @media(min-width: 600px){
     body{
@@ -120,9 +94,9 @@ main{
         flex-direction: column;
     }
     main{
-        align-items: flex-start;
-        display: flex;
-        flex-direction: row;
+        width: 100%;
+        display: grid;
+        grid-template-rows: repeat(10, 10%);
     }
     form> .dataInput,
     form> .colorWrapper,
@@ -134,6 +108,6 @@ main{
         gap: 1rem;
     }
     .singleTask{
-        max-width: 300px;
+        width: clamp(250px,35vw,400px);
     }
 }

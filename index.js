@@ -1,9 +1,5 @@
 const taskSubmit = document.querySelector(".submit");
-const checkboxes = document.querySelectorAll(".checkbox");
 const main = document.querySelector(".mainContent");
-const switchBar = document.querySelector(".bar");
-const slider = document.querySelector(".slider");
-const sliderDesc = document.querySelector(".slider-desc");
 let taskColor="#A0DA41";
 let tasksTab = [];
 let templatesTab = [];
@@ -12,126 +8,16 @@ let sortedTasks=[];
 let taskIndex=0;
 let checked = 0;
 
-//funkcja na zmiane sortowania
-
-switchBar.addEventListener("click", (ev) =>{
-    ev.preventDefault();
-    if(checked === 0){
-        slider.style.left = "9.4rem";
-        checked = 1;
-        sliderDesc.style.left = ".7rem";
-        sliderDesc.innerHTML = "Sortuj po <br> priorytecie"
-    }else{
-        slider.style.left = "0.5rem";
-        checked = 0;
-        sliderDesc.style.left = "7rem";
-        sliderDesc.innerHTML = "Sortuj po <br> dacie"
-    }
-} )
-
-//Sortowanie tablicy
-//przelecieć tyle razy ile jest elementów jeśli jest wyższy priorytet splice i unshift
-const pusher = (arr, ptab) =>{
-    for(let a=0; a<arr.length; a++){
-        ptab.push(arr[a]);
-    }
-}
-const mySort = (tab)=>{
-    let prior0 = [];
-    let prior1 = [];
-    let prior2 = [];
-    let endTab=[];
-    for(let i=0; i<tab.length; i++){
-        if(tab[i].priorytet===0){
-            prior0.push(tab[i]);
-        }else if(tab[i].priorytet===1){
-            prior1.push(tab[i]);
-        }else{
-            prior2.push(tab[i]);
-        }
-    }
-    pusher(prior2, endTab);
-    pusher(prior1, endTab);
-    pusher(prior0, endTab);
-    return endTab;
-}
-
-//sortowanie po dacie wykonania
-
-const dateSort = (tab) => {
-    tab.sort((a, b) => {
-        let aDate=`${a.year}${a.month}${a.day}`;
-        let bDate=`${b.year}${b.month}${b.day}`;
-        return aDate - bDate;
-    });
-    return tab;
-}
-
-
-
-//Tworzenie szablonu dla pojedynczego zadania
-
-let taskTemplateCreate = ({name, kategoria, year, month, day, priorytet, color, desc, index}) =>{
-    let art = document.createElement("article");
-    art.classList.add("singleTask");
-    let header = document.createElement("header");
-    header.classList.add("taskHeader");
-    header.style.background = color;
-    let taskCategory = document.createElement("h3");
-    let taskDate = document.createElement("h4");
-    taskCategory.innerText=kategoria;
-    taskDate.innerText= year +"-"+month+"-"+day;
-    header.appendChild(taskCategory);
-    header.appendChild(taskDate);
-    let taskName = document.createElement("p")
-    taskName.innerText=name;
-    art.appendChild(header);
-    art.appendChild(taskName);
-
-    return art;
-};
-
-//Funkcja zaznaczająca błędy
-
-const inputValidate = (inputElem) => {
-    if(inputElem.value===""){
-        inputElem.style.boxShadow = '0 0 1em rgb(255,59,59)';
-    }
-}
-
-//Funkcja wybierjąca kolor nagłówka
-
-checkboxes.forEach(box=>{
-    box.addEventListener("click", (ev)=>{
-        ev.preventDefault();
-        if (box.classList.contains('red')) {
-            taskColor="#E85555"
-        }else if (box.classList.contains('green')) {
-            taskColor="#A0DA41"
-        }else if (box.classList.contains('blue')) {
-            taskColor="#6EADE8"
-        }else if (box.classList.contains('yellow')) {
-            taskColor="#E7D856"
-        }
-        checkboxes.forEach(Boxes=>{
-            if(Boxes.classList.contains('checkBoxShadow')){
-                Boxes.classList.toggle('checkBoxShadow')
-            }
-        })
-        box.classList.add('checkBoxShadow');
-    })
-})
-
 //Funkcja wywoływana przy wciśnięciu formularza
 
 taskSubmit.addEventListener("click", (ev) => {
     ev.preventDefault();
     const nazwa = document.querySelector(".nazwa");
-    const kategoria = document.querySelector(".kategoria");
+    const opis = document.querySelector(".opis");
     const data = document.querySelector(".data");
     const priorytet = document.querySelector(".priorytet");
 
-    const inputsTab = [nazwa, kategoria, data];
+    const inputsTab = [nazwa, opis, data];
     inputsTab.forEach(inputElem => {
         inputElem.addEventListener("click", (ev)=>{
             ev.preventDefault();
@@ -139,7 +25,7 @@ taskSubmit.addEventListener("click", (ev) => {
             inputElem.style.boxShadow = "none";
         })
     });
-    if(nazwa.value!=="" && kategoria.value!=="" && data.value!==""){
+    if(nazwa.value!=="" && opis.value!=="" && data.value!==""){
         let prior=0;
         if(priorytet.value==="important") 
             prior = 1;
@@ -156,39 +42,87 @@ taskSubmit.addEventListener("click", (ev) => {
             }
         task = {
             name: nazwa.value,
-            kategoria: kategoria.value,
+            opis: opis.value,
             year: year,
             month: month,
             day: day,
             priorytet: prior,
-            color: taskColor,
             index: taskIndex   
         };
         taskIndex++;
         console.log(task);
         sortedTasks.push(task);
-        if(checked === 1){
-            
-            let newSort = mySort(sortedTasks);
-            templatesTab = [];
-            for(let i=0; i<newSort.length; i++){
-                templatesTab.push(taskTemplateCreate(newSort[i]));
-            }
-            main.innerHTML="";
-            templatesTab.forEach(article=>{main.appendChild(article)});
-            
-        }else{
-            let dateSorted = dateSort(sortedTasks);
-            templatesTab = [];
-            for(let i=0; i<dateSorted.length; i++){
-                templatesTab.push(taskTemplateCreate(dateSorted[i]));
-            }
-            main.innerHTML="";
-            templatesTab.forEach(article=>{main.appendChild(article)});
-            
+
+        templatesTab = [];
+        for(let i=0; i<sortedTasks.length; i++){
+            templatesTab.push(taskTemplateCreate(sortedTasks[i]));
+            console.log(sortedTasks[i]);
         }
+        main.innerHTML="";
+        templatesTab.forEach(article=>{main.appendChild(article)});
 
     }else{
         inputsTab.forEach(inputElem => inputValidate(inputElem));
     }
 })
+//sortowanie po dacie wykonania
+
+const dateSort = (tab) => {
+    tab.sort((a, b) => {
+        let aDate=`${a.year}${a.month}${a.day}`;
+        let bDate=`${b.year}${b.month}${b.day}`;
+        return aDate - bDate;
+    });
+    return tab;
+}
+
+
+
+//Tworzenie szablonu dla pojedynczego zadania
+
+// let taskTemplateCreate = ({name, kategoria, year, month, day, priorytet, color, desc, index}) =>{
+//     let art = document.createElement("article");
+//     art.classList.add("singleTask");
+//     let header = document.createElement("header");
+//     header.classList.add("taskHeader");
+//     header.style.background = color;
+//     let taskCategory = document.createElement("h3");
+//     let taskDate = document.createElement("h4");
+//     taskCategory.innerText=kategoria;
+//     taskDate.innerText= year +"-"+month+"-"+day;
+//     header.appendChild(taskCategory);
+//     header.appendChild(taskDate);
+//     let taskName = document.createElement("p")
+//     taskName.innerText=name;
+//     art.appendChild(header);
+//     art.appendChild(taskName);
+
+//     return art;
+// };
+
+let taskTemplateCreate = ({name, opis, year, month, day, priorytet, index})=>{
+    let taskTemp = document.createElement("article");
+    taskTemp.classList.add("singleTask");
+    let header = document.createElement("header");
+    header.classList.add("taskHeader");
+    header.style.background = "#A0DA41";
+    let taskName = document.createElement("h3");
+    let taskDate = document.createElement("h4");
+    taskName.innerText=name;
+    taskDate.innerText= year +"-"+month+"-"+day;
+    header.appendChild(taskName);
+    header.appendChild(taskDate);
+    let taskDesc = document.createElement("p")
+    taskDesc.innerText=opis;
+    taskTemp.appendChild(header);
+    taskTemp.appendChild(taskDesc);
+    return taskTemp;
+};
+
+//Funkcja zaznaczająca błędy
+
+const inputValidate = (inputElem) => {
+    if(inputElem.value===""){
+        inputElem.style.boxShadow = '0 0 1em rgb(255,59,59)';
+    }
+}

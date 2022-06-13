@@ -13,29 +13,15 @@
 <body>
     <form class="form">
         <p>Dodaj zadanie:</p>
-        <input class="dataInput nazwa" type="text" placeholder="Nazwa:" required>
-        <input class="dataInput kategoria" type="text" placeholder="Kategoria:" required>
-        <input class="dataInput data" type="date" placeholder="Data:" required>
+        <input class="dataInput nazwa" type="text" placeholder="Nazwa:">
+        <input class="dataInput opis" type="text" placeholder="Opis:">
+        <input class="dataInput data" type="date" placeholder="Data:">
         <select class="dataInput priorytet">
             <option value="normal">Zwykłe</option>
             <option value="important">Ważne</option>
             <option value="neededYesterday">Bardzo Pilne</option>
         </select>
-        <div class="colorWrapper">
-            <div class="checkbox green checkBoxShadow"></div>
-            <div class="checkbox red"></div>
-            <div class="checkbox blue"></div>
-            <div class="checkbox yellow"></div>
-        </div>
         <button class="submit">Dodaj!</button>
-        <div class="switch">
-            <div class="bar">
-                <div class="slider">
-                    
-                </div>
-                <p class="slider-desc">Sortuj po <br> dacie</p>
-            </div>
-        </div>
     </form>
 
     <main class="mainContent">
