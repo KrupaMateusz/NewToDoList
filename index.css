@@ -73,6 +73,37 @@ main{
     margin: 0px;
     font-size: 2.2rem;
 }
+/* .closeBtn{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.closeBtn:hover{
+    background-color: #E85555;
+} */
+.closeBtn {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+.closeBtn:hover {
+    background-color: #E85555;
+}
+.closeBtn:before, .closeBtn:after{
+    content:'';
+    position: absolute;
+    height: 2px;
+    width: 22px;
+    top: 11px;
+    left: 2px;
+    background-color: #333;
+}
+  .closeBtn:before {
+    transform: rotate(45deg);
+  }
+  .closeBtn:after {
+    transform: rotate(-45deg);
+  }
 .taskHeader{
     font-size: 1.2rem;
     display: flex;

@@ -8,8 +8,6 @@ let sortedTasks=[];
 let taskIndex=0;
 let checked = 0;
 
-//Funkcja wywoływana przy wciśnięciu formularza
-
 taskSubmit.addEventListener("click", (ev) => {
     ev.preventDefault();
     const nazwa = document.querySelector(".nazwa");
@@ -65,7 +63,6 @@ taskSubmit.addEventListener("click", (ev) => {
         inputsTab.forEach(inputElem => inputValidate(inputElem));
     }
 })
-//sortowanie po dacie wykonania
 
 const dateSort = (tab) => {
     tab.sort((a, b) => {
@@ -76,50 +73,27 @@ const dateSort = (tab) => {
     return tab;
 }
 
-
-
-//Tworzenie szablonu dla pojedynczego zadania
-
-// let taskTemplateCreate = ({name, kategoria, year, month, day, priorytet, color, desc, index}) =>{
-//     let art = document.createElement("article");
-//     art.classList.add("singleTask");
-//     let header = document.createElement("header");
-//     header.classList.add("taskHeader");
-//     header.style.background = color;
-//     let taskCategory = document.createElement("h3");
-//     let taskDate = document.createElement("h4");
-//     taskCategory.innerText=kategoria;
-//     taskDate.innerText= year +"-"+month+"-"+day;
-//     header.appendChild(taskCategory);
-//     header.appendChild(taskDate);
-//     let taskName = document.createElement("p")
-//     taskName.innerText=name;
-//     art.appendChild(header);
-//     art.appendChild(taskName);
-
-//     return art;
-// };
-
 let taskTemplateCreate = ({name, opis, year, month, day, priorytet, index})=>{
     let taskTemp = document.createElement("article");
     taskTemp.classList.add("singleTask");
     let header = document.createElement("header");
     header.classList.add("taskHeader");
     header.style.background = "#A0DA41";
+    let closeBtn = document.createElement("div");
+    closeBtn.classList.add("closeBtn");
     let taskName = document.createElement("h3");
     let taskDate = document.createElement("h4");
     taskName.innerText=name;
     taskDate.innerText= year +"-"+month+"-"+day;
     header.appendChild(taskName);
     header.appendChild(taskDate);
-    let taskDesc = document.createElement("p")
+    header.appendChild(closeBtn);
+    let taskDesc = document.createElement("p");
     taskDesc.innerText=opis;
     taskTemp.appendChild(header);
     taskTemp.appendChild(taskDesc);
     return taskTemp;
 };
-
-//Funkcja zaznaczająca błędy
 
 const inputValidate = (inputElem) => {
     if(inputElem.value===""){
